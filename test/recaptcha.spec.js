@@ -27,6 +27,7 @@ test.group('Recaptcha', () => {
     const config = new Config()
     config.set('recaptcha.siteKey', '6LciB3EUAAAAACxioyycxI9ndxgaxywEVw8uKSu7')
     config.set('recaptcha.secretKey', '6LciB3EUAAAAAPrHpjgfLdHAAYN8ogu90gOFJ9v')
+    config.set('recaptcha.ssl', false)
 
     const recaptcha = new Recaptcha(config)
 
@@ -56,6 +57,7 @@ test.group('Recaptcha', () => {
     const config = new Config()
     config.set('recaptcha.siteKey', '6LciB3EUAAAAACxioyycxI9ndxgaxywEVw8uKSu7')
     config.set('recaptcha.secretKey', '6LciB3EUAAAAAPrHpjgfLdHAAYN8ogu90gOFJ9v')
+    config.set('recaptcha.ssl', false)
 
     const recaptcha = new Recaptcha(config)
 
