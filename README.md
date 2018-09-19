@@ -59,3 +59,12 @@ Example:
 ```js
  Route.post('login', 'AuthController.login').middleware(['recaptcha'])
 ```
+
+This middleware be check `recaptcha` field in body request
+```json
+{
+  "login": "admin",
+  "password": "admin",
+  "recaptcha": "osjoiadjaoisdjasijda..." // Google reCAPTCHA response
+}
+```
