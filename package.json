@@ -18,7 +18,8 @@
     "adonisjs",
     "adonis-framework",
     "adonis-recaptcha",
-    "adonis-recaptcha2"
+    "adonis-recaptcha2",
+    "recaptcha2"
   ],
   "author": "LookinGit",
   "license": "MIT",
