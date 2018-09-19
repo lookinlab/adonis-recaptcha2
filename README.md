@@ -65,6 +65,7 @@ This middleware be check `recaptcha` field in body request
 {
   "login": "admin",
   "password": "admin",
-  "recaptcha": "osjoiadjaoisdjasijda..." // Google reCAPTCHA response
+  "recaptcha": "osjoiadjaoisdjasijda..."
 }
 ```
+> field `recaptcha` it is Google reCAPTCHA response
