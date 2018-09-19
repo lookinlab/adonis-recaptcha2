@@ -2,9 +2,12 @@
 > Verifier for Google reCAPTCHA version 2 based on [recaptcha2](https://github.com/fereidani/recaptcha2)
 
 ## Installation
-Make sure to install it using `npm` or `yarn`.
+Make sure to install it using `adonis-cli`, `npm` or `yarn`.
 
 ```bash
+# adonis
+adonis install adonis-recaptcha2
+
 # npm
 npm i adonis-recaptcha2
 
