@@ -1,4 +1,7 @@
 # Adonis ReCAPTCHA v2 Middleware
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/lookinlab/adonis-recaptcha2.svg)](https://greenkeeper.io/)
+
 > Verifier for Google reCAPTCHA version 2 based on [recaptcha2](https://github.com/fereidani/recaptcha2)
 
 ## Installation
