@@ -1,6 +1,6 @@
 {
   "name": "adonis-recaptcha2",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Google reCAPTCHA v2 middleware for AdonisJS",
   "main": "index.js",
   "scripts": {
