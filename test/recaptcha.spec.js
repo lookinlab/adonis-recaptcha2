@@ -41,7 +41,7 @@ test.group('Recaptcha', () => {
     }
     const request = {
       inputs: {
-        recaptcha: false
+        'g-recaptcha-response': false
       },
       input (name) {
         return this.inputs[name]
@@ -71,7 +71,7 @@ test.group('Recaptcha', () => {
     }
     const request = {
       inputs: {
-        recaptcha: 'ksdfisdfbisb123df123335p394.dlfdlfjgdf123130098u'
+        'g-recaptcha-response': 'ksdfisdfbisb123df123335p394.dlfdlfjgdf123130098u'
       },
       input (name) {
         return this.inputs[name]
