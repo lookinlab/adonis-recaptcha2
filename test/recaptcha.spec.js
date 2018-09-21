@@ -23,7 +23,7 @@ test.group('Recaptcha', () => {
     assert.isFalse(recaptcha.options.ssl)
   })
 
-  test('get 401 status code when not set recaptcha response', async (assert) => {
+  test('get 400 status code when not set recaptcha response', async (assert) => {
     const config = new Config()
     config.set('recaptcha.siteKey', '6LciB3EUAAAAACxioyycxI9ndxgaxywEVw8uKSu7')
     config.set('recaptcha.secretKey', '6LciB3EUAAAAAPrHpjgfLdHAAYN8ogu90gOFJ9v')
@@ -32,11 +32,13 @@ test.group('Recaptcha', () => {
     const recaptcha = new Recaptcha(config)
 
     const response = {
-      status: 200,
-      error: null,
-      send (status, message) {
-        this.status = status
-        this.error = message
+      code: 200,
+      body: null,
+      status (code) {
+        this.code = code; return this
+      },
+      send (message) {
+        this.body = message; return this
       }
     }
     const request = {
@@ -49,8 +51,8 @@ test.group('Recaptcha', () => {
     }
 
     await recaptcha.handle({ response, request }, function () {})
-    assert.equal(401, response.status)
-    assert.equal('The response parameter is missing.', response.error)
+    assert.equal(400, response.code)
+    assert.equal('The response parameter is missing.', response.body)
   })
 
   test('get request error when recaptcha is invalid', async (assert) => {
@@ -62,11 +64,13 @@ test.group('Recaptcha', () => {
     const recaptcha = new Recaptcha(config)
 
     const response = {
-      status: 200,
-      error: null,
-      send (status, message) {
-        this.status = status
-        this.error = message
+      code: 200,
+      body: null,
+      status (code) {
+        this.code = code; return this
+      },
+      send (message) {
+        this.body = message; return this
       }
     }
     const request = {
@@ -79,7 +83,7 @@ test.group('Recaptcha', () => {
     }
 
     await recaptcha.handle({ response, request }, function () {})
-    assert.equal(401, response.status)
-    assert.equal('The response parameter is invalid or malformed.', response.error)
+    assert.equal(400, response.code)
+    assert.equal('The response parameter is invalid or malformed.', response.body)
   })
 })
