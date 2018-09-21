@@ -75,3 +75,33 @@ This middleware be check `g-recaptcha-response` field in body request
 }
 ```
 > Field `g-recaptcha-response` it is Google reCAPTCHA response
+
+## Use on client in View
+> **Note:** Require `Adonis/Src/View` from [`adonis-framework`](https://github.com/adonisjs/adonis-framework)
+
+### Step 1: Enable `client` in `config/recaptcha.js`
+```js
+module.exports = {
+  ... 
+  client: true
+}
+```
+
+### Step 2: Use `recaptcha()` function in views
+```html
+...
+<head>
+  ...
+  {{ recaptcha('script') }}
+</head>
+<body>
+  <section>
+    ...
+    <form action="/login">
+      ...
+      {{ recaptcha('form') }}
+    </form>
+  </section>
+</body>
+</html>
+```

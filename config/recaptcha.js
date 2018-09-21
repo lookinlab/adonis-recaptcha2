@@ -32,5 +32,15 @@ module.exports = {
   | Disable if you don't want to access the Google API via a secure connection
   |
   */
-  ssl: true
+  ssl: true,
+
+  /*
+   |--------------------------------------------------------------------------
+   | Client
+   |--------------------------------------------------------------------------
+   |
+   | Enable if you need use recaptcha in Views
+   |
+   */
+  client: false
 }
