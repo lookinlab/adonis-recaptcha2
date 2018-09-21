@@ -1,6 +1,8 @@
-# Adonis ReCAPTCHA v2 Middleware
+# Adonis ReCAPTCHA v2
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/lookinlab/adonis-recaptcha2.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/lookinlab/adonis-recaptcha2.svg?branch=master)](https://travis-ci.org/lookinlab/adonis-recaptcha2)
+[![Coverage Status](https://coveralls.io/repos/github/lookinlab/adonis-recaptcha2/badge.svg?branch=master)](https://coveralls.io/github/lookinlab/adonis-recaptcha2?branch=master)
 
 Verifier for Google reCAPTCHA v2
 
