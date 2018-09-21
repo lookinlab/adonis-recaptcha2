@@ -23,7 +23,7 @@ class Recaptcha {
       await recaptcha.validate(recaptchaResponse)
     } catch (errors) {
       response
-        .status(401)
+        .status(400)
         .send(recaptcha.translateErrors(errors || 'invalid-input-response'))
     }
     await next()
