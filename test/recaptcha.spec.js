@@ -17,10 +17,10 @@ const Recaptcha = require('../src/Recaptcha')
 test.group('Recaptcha', () => {
   test('recaptcha config merge', (assert) => {
     const config = new Config()
-    config.set('recaptcha.ssl', true)
+    config.set('recaptcha.ssl', false)
 
     const recaptcha = new Recaptcha(config)
-    assert.isTrue(recaptcha.options.ssl)
+    assert.isFalse(recaptcha.options.ssl)
   })
 
   test('get 401 status code when not set recaptcha response', async (assert) => {
