@@ -2,10 +2,10 @@
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/lookinlab/adonis-recaptcha2.svg)](https://greenkeeper.io/)
 
-> Verifier for Google reCAPTCHA version 2 based on [recaptcha2](https://github.com/fereidani/recaptcha2)
+Verifier for Google reCAPTCHA v2
 
 ## Installation
-Make sure to install it using `adonis-cli`, `npm` or `yarn`.
+Make sure to install it using [`adonis-cli`](https://github.com/adonisjs/adonis-cli), `npm` or `yarn`.
 
 ```bash
 # adonis
@@ -40,7 +40,7 @@ const namedMiddleware = {
 }
 ```
 
-- Add a variables to `.env` file of project:
+- Add a variables to `.env` file of project.
 ```txt
 ...
 
@@ -48,7 +48,7 @@ RECAPTCHA_SITE_KEY=YOUR_KEY
 RECAPTCHA_SECRET_KEY=YOUR_KEY
 ```
 
-- Set options in `config/recaptcha.js`
+- Set options in `config/recaptcha.js`.
 ```js
 const Env = use('Env')
 
@@ -60,18 +60,18 @@ module.exports = {
 }
 ```
 
-### Step 3: Add middleware to routes `start/routes.js`
+### Step 3: Add middleware for `start/routes.js`
 Example:
 ```js
- Route.post('login', 'AuthController.login').middleware(['recaptcha'])
+Route.post('login', 'AuthController.login').middleware(['recaptcha'])
 ```
 
-This middleware be check `recaptcha` field in body request
+This middleware be check `g-recaptcha-response` field in body request
 ```json
 {
   "login": "admin",
   "password": "admin",
-  "recaptcha": "osjoiadjaoisdjasijda..."
+  "g-recaptcha-response": "osjoiadjaoisdjasijda..."
 }
 ```
-> field `recaptcha` it is Google reCAPTCHA response
+> Field `g-recaptcha-response` it is Google reCAPTCHA response
