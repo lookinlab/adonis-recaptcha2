@@ -35,13 +35,6 @@ const providers = [
 ]
 ```
 
-- Add to named middleware inside `start/kernel.js` file.
-```js
-const namedMiddleware = {
-  recaptcha: 'Adonis/Middleware/Recaptcha'
-}
-```
-
 - Add a variables to `.env` file of project.
 ```txt
 ...

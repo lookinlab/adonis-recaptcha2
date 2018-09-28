@@ -13,26 +13,35 @@ const { ServiceProvider } = require('@adonisjs/fold')
 
 class RecaptchaProvider extends ServiceProvider {
   register () {
-    const Config = this.app.use('Adonis/Src/Config')
-
-    this.app.bind('Adonis/Middleware/Recaptcha', () => {
+    this.app.bind('Adonis/Middleware/Recaptcha', (app) => {
       const Recaptcha = require('../src/Recaptcha')
-      return new Recaptcha(Config)
+      return new Recaptcha(app.use('Adonis/Src/Config'))
     })
-
-    if (Config.get('recaptcha').client) {
-      this._bootRecaptchaClient(Config)
-    }
   }
-  _bootRecaptchaClient (Config) {
+  boot () {
+    const Server = this.app.use('Adonis/Src/Server')
+    Server.registerNamed({ recaptcha: 'Adonis/Middleware/Recaptcha' })
+
+    this._bootRecaptchaClient()
+  }
+
+  /**
+   * Boot Recaptcha for use in views
+   *
+   * @private
+   */
+  _bootRecaptchaClient () {
+    const Config = this.app.use('Adonis/Src/Config')
+    const params = Config.get('recaptcha')
+    if (!params.client) return
+
     try {
       const View = this.app.use('View')
-      const options = Config.get('recaptcha')
 
       View.global('recaptcha', function (type = 'script') {
         return this.safe(
           (type !== 'script')
-            ? `<div class="g-recaptcha" data-sitekey="${options.siteKey}"></div>`
+            ? `<div class="g-recaptcha" data-sitekey="${params.siteKey}"></div>`
             : '<script src="//www.google.com/recaptcha/api.js" async defer></script>'
         )
       })
