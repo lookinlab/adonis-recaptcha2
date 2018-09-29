@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "standard",
     "pretest": "npm run lint",
-    "test": "node japaFile.js",
+    "test": "nyc node japaFile.js",
     "posttest": "npm run coverage",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
