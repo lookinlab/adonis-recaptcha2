@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "standard",
     "pretest": "npm run lint",
-    "test": "nyc japa",
+    "test": "node japaFile.js",
     "posttest": "npm run coverage",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
@@ -28,11 +28,10 @@
   },
   "devDependencies": {
     "@adonisjs/fold": "^4.0.9",
-    "@adonisjs/sink": "^1.0.13",
+    "@adonisjs/sink": "^1.0.17",
     "coveralls": "^3.0.2",
-    "japa": "^1.0.5",
-    "japa-cli": "^1.0.1",
-    "nyc": "^13.1.0",
+    "japa": "^2.0.3",
+    "nyc": "^13.0.1",
     "standard": "^12.0.1"
   },
   "standard": {
