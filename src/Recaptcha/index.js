@@ -10,6 +10,7 @@
  */
 
 const ReCAPTCHA = require('recaptcha2')
+const GE = require('@adonisjs/generic-exceptions')
 const defaultConfig = require('../../config/recaptcha.js')
 
 class Recaptcha {
@@ -22,9 +23,7 @@ class Recaptcha {
     try {
       await recaptcha.validate(recaptchaResponse)
     } catch (errors) {
-      response
-        .status(400)
-        .send(recaptcha.translateErrors(errors || 'invalid-input-response'))
+      throw new GE.HttpException(recaptcha.translateErrors(errors || 'invalid-input-response'), 400, 'E_CAPTCHA')
     }
     await next()
   }
