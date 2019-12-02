@@ -35,10 +35,12 @@ test.group('Recaptcha', () => {
       code: 200,
       body: null,
       status (code) {
-        this.code = code; return this
+        this.code = code
+        return this
       },
       send (message) {
-        this.body = message; return this
+        this.body = message
+        return this
       }
     }
     const request = {
@@ -70,10 +72,12 @@ test.group('Recaptcha', () => {
       code: 200,
       body: null,
       status (code) {
-        this.code = code; return this
+        this.code = code
+        return this
       },
       send (message) {
-        this.body = message; return this
+        this.body = message
+        return this
       }
     }
     const request = {

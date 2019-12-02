@@ -18,6 +18,7 @@ class RecaptchaProvider extends ServiceProvider {
       return new Recaptcha(app.use('Adonis/Src/Config'))
     })
   }
+
   boot () {
     const Server = this.app.use('Adonis/Src/Server')
     Server.registerNamed({ recaptcha: 'Adonis/Middleware/Recaptcha' })

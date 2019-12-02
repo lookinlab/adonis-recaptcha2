@@ -17,6 +17,7 @@ class Recaptcha {
   constructor (Config) {
     this.options = Config.merge('recaptcha', defaultConfig)
   }
+
   async handle ({ request, response }, next) {
     const recaptchaResponse = request.input('g-recaptcha-response')
     const recaptcha = new ReCAPTCHA(this.options)
