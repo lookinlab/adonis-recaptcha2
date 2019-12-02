@@ -50,9 +50,12 @@ test.group('Recaptcha', () => {
       }
     }
 
-    await recaptcha.handle({ response, request }, function () {})
-    assert.equal(400, response.code)
-    assert.equal('The response parameter is missing.', response.body)
+    try {
+      await recaptcha.handle({ response, request }, function () {})
+    } catch (e) {
+      assert.equal(400, e.status)
+      assert.equal('E_CAPTCHA: The response parameter is missing.', e.message)
+    }
   })
 
   test('get request error when recaptcha is invalid', async (assert) => {
@@ -81,9 +84,11 @@ test.group('Recaptcha', () => {
         return this.inputs[name]
       }
     }
-
-    await recaptcha.handle({ response, request }, function () {})
-    assert.equal(400, response.code)
-    assert.equal('The response parameter is invalid or malformed.', response.body)
+    try {
+      await recaptcha.handle({ response, request }, function () {})
+    } catch (e) {
+      assert.equal(400, e.status)
+      assert.equal('E_CAPTCHA: The response parameter is invalid or malformed.', e.message)
+    }
   })
 })
