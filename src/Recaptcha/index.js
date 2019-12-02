@@ -26,6 +26,7 @@ class Recaptcha {
     } catch (errors) {
       throw new GE.HttpException(recaptcha.translateErrors(errors || 'invalid-input-response'), 400, 'E_CAPTCHA')
     }
+    /* istanbul ignore next */
     await next()
   }
 }
