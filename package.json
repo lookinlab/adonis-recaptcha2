@@ -31,7 +31,7 @@
     "@adonisjs/sink": "^1.0.17",
     "coveralls": "^3.0.9",
     "japa": "^3.0.1",
-    "nyc": "^14.0.0",
+    "nyc": "^15.0.0",
     "standard": "^14.3.1"
   },
   "standard": {
