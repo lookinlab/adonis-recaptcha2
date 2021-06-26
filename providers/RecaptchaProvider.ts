@@ -19,8 +19,7 @@ export default class RecaptchaProvider {
         .resolveBinding('Adonis/Core/Config')
         .get('recaptcha', {})
 
-      const Recaptcha = require('recaptcha2')
-      return new Recaptcha(config)
+      return new (require('recaptcha2'))(config)
     })
   }
 
@@ -32,7 +31,6 @@ export default class RecaptchaProvider {
     if (!config.views) {
       return
     }
-
     try {
       const View = this.app.container.resolveBinding('Adonis/Core/View')
 
@@ -48,5 +46,3 @@ export default class RecaptchaProvider {
     }
   }
 }
-
-module.exports = RecaptchaProvider
