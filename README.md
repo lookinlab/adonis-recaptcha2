@@ -1,67 +1,98 @@
 # Adonis ReCAPTCHA v2
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/lookinlab/adonis-recaptcha2.svg)](https://greenkeeper.io/)
+Version [for **Adonis v4**](https://github.com/lookinlab/adonis-recaptcha2/tree/v1)
+
 [![Build Status](https://travis-ci.org/lookinlab/adonis-recaptcha2.svg?branch=master)](https://travis-ci.org/lookinlab/adonis-recaptcha2)
 [![Coverage Status](https://coveralls.io/repos/github/lookinlab/adonis-recaptcha2/badge.svg?branch=master)](https://coveralls.io/github/lookinlab/adonis-recaptcha2?branch=master)
 
-Verifier for Google reCAPTCHA v2
+Verifier for Google ReCAPTCHA v2. Not working with ReCAPTCHA Enterprise or v3
 
 ## Installation
-Make sure to install it using [`adonis-cli`](https://github.com/adonisjs/adonis-cli), `npm` or `yarn`.
+
+Make sure to install it using `npm` or `yarn`.
 
 ```bash
-# adonis
-adonis install adonis-recaptcha2
-
 # npm
 npm i adonis-recaptcha2
+node ace configure adonis-recaptcha2
 
 # yarn
 yarn add adonis-recaptcha2
+node ace configure adonis-recaptcha2
 ```
 
 ## How to use
 
 ### Step 1: Get secret and site keys
-You need to receive your site key and secret key for your domain from [Google reCAPTCHA](https://www.google.com/recaptcha)
+
+You need to receive your `siteKey` and `secretKey` for your domain from [Google reCAPTCHA v3 Admin Console](https://www.google.com/recaptcha/admin)
 
 Login and Follow the steps on this page to include the reCAPTCHA on your website.
 
 ### Step 2: Initialization
-- Make sure to register the provider inside `start/app.js` file.
-```js
-const providers = [
-  'adonis-recaptcha2/providers/RecaptchaProvider'
-]
+
+- Make sure to register the provider inside `.adonisrc.json` file.
+
+```json
+{
+  "providers": [
+    "...other packages",
+    "adonis-recaptcha2"
+  ] 
+}
 ```
 
-- Add a variables to `.env` file of project.
+- Add variables to `.env` file of project.
+
 ```txt
 ...
-
 RECAPTCHA_SITE_KEY=YOUR_KEY
 RECAPTCHA_SECRET_KEY=YOUR_KEY
 ```
 
-- Set options in `config/recaptcha.js`.
-```js
-const Env = use('Env')
+- Add fields to `env.ts` file of project.
 
-module.exports = {
-  ...
+```ts
+import Env from '@ioc:Adonis/Core/Env'
+
+export default Env.rules({
+  // ...
+  RECAPTCHA_SITE_KEY: Env.schema.string(),
+  RECAPTCHA_SECRET_KEY: Env.schema.string(),
+})
+```
+
+- Set options in `config/recaptcha.ts`.
+
+```ts
+import Env from '@ioc:Adonis/Core/Env'
+import { RecaptchaConfig } from '@ioc:Adonis/Addons/Recaptcha2'
+
+const recaptchaConfig: RecaptchaConfig = {
+  // ...
   siteKey: Env.get('RECAPTCHA_SITE_KEY'),
-  ...
-  secretKey: Env.get('RECAPTCHA_SECRET_KEY')
+  // ...
+  secretKey: Env.get('RECAPTCHA_SECRET_KEY'),
 }
+export default recaptchaConfig
 ```
 
-### Step 3: Add middleware for `start/routes.js`
+### Step 3: Add named middleware to `start/kernel.ts`
+
+```ts
+Server.middleware.registerNamed({
+  recaptcha: () => import('App/Middleware/Recaptcha')
+})
+```
+
+### Step 4: Add middleware for `start/routes.ts`
+
 Example:
-```js
-Route.post('login', 'AuthController.login').middleware(['recaptcha'])
+```ts
+Route.post('login', 'AuthController.login').middleware('recaptcha')
 ```
 
-This middleware be check `g-recaptcha-response` field in body request
+This middleware will check `g-recaptcha-response` field in body request
 ```json
 {
   "login": "admin",
@@ -69,20 +100,20 @@ This middleware be check `g-recaptcha-response` field in body request
   "g-recaptcha-response": "osjoiadjaoisdjasijda..."
 }
 ```
-> Field `g-recaptcha-response` it is Google reCAPTCHA response
+> Field `g-recaptcha-response` it is Google reCAPTCHA v2 response
 
-## Use on client in View
-> **Note:** Require `Adonis/Src/View` from [`adonis-framework`](https://github.com/adonisjs/adonis-framework)
+## Use in Views
+> **Note:** Required [View](https://docs.adonisjs.com/guides/views/introduction) (@adonisjs/view)
 
-### Step 1: Enable `client` in `config/recaptcha.js`
-```js
-module.exports = {
-  ... 
-  client: true
+### Step 1: Enable `views` in `config/recaptcha.ts`
+```ts
+const recaptchaConfig: RecaptchaConfig = {
+  // ... 
+  views: true
 }
 ```
 
-### Step 2: Use `recaptcha()` function in views
+### Step 2: Use `recaptcha()` function in templates
 ```html
 ...
 <head>

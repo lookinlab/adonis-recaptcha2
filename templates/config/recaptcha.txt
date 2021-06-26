@@ -1,6 +1,13 @@
-'use strict'
+/*
+ * adonis-recaptcha2
+ *
+ * Source: https://git.io/JnNoc
+ */
 
-module.exports = {
+import Env from '@ioc:Adonis/Core/Env'
+import { RecaptchaConfig } from '@ioc:Adonis/Addons/Recaptcha2'
+
+const recaptchaConfig: RecaptchaConfig = {
   /*
   |--------------------------------------------------------------------------
   | Site Key
@@ -9,7 +16,7 @@ module.exports = {
   | The key for form
   |
   */
-  siteKey: '', // Env.get('RECAPTCHA_SITE_KEY'),
+  siteKey: Env.get('RECAPTCHA_SITE_KEY'),
 
   /*
   |--------------------------------------------------------------------------
@@ -20,7 +27,7 @@ module.exports = {
   | * Don`t tell it to anyone
   |
   */
-  secretKey: '', // Env.get('RECAPTCHA_SECRET_KEY'),
+  secretKey: Env.get('RECAPTCHA_SECRET_KEY'),
 
   /*
   |--------------------------------------------------------------------------
@@ -36,11 +43,12 @@ module.exports = {
 
   /*
    |--------------------------------------------------------------------------
-   | Client
+   | Views
    |--------------------------------------------------------------------------
    |
    | Enable if you need use recaptcha in Views
    |
    */
-  client: false
+  views: false
 }
+export default recaptchaConfig
