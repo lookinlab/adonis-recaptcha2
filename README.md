@@ -8,13 +8,13 @@ Make sure to install it using [`adonis-cli`](https://github.com/adonisjs/adonis-
 
 ```bash
 # adonis
-adonis install adonis-recaptcha2
+adonis install adonis-recaptcha2@legacy
 
 # npm
-npm i adonis-recaptcha2
+npm i adonis-recaptcha2@legacy
 
 # yarn
-yarn add adonis-recaptcha2
+yarn add adonis-recaptcha2@legacy
 ```
 
 ## How to use
