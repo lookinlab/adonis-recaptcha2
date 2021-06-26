@@ -1,5 +1,3 @@
-'use strict'
-
 /*
  * adonis-recaptcha2
  *
@@ -12,7 +10,7 @@
 const test = require('japa')
 const { Config } = require('@adonisjs/sink')
 
-const Recaptcha = require('../src/Recaptcha')
+const Recaptcha = require('../templates/middleware')
 
 test.group('Recaptcha', () => {
   test('recaptcha config merge', (assert) => {
@@ -41,15 +39,15 @@ test.group('Recaptcha', () => {
       send (message) {
         this.body = message
         return this
-      }
+      },
     }
     const request = {
       inputs: {
-        'g-recaptcha-response': false
+        'g-recaptcha-response': false,
       },
       input (name) {
         return this.inputs[name]
-      }
+      },
     }
 
     try {
@@ -78,15 +76,15 @@ test.group('Recaptcha', () => {
       send (message) {
         this.body = message
         return this
-      }
+      },
     }
     const request = {
       inputs: {
-        'g-recaptcha-response': 'ksdfisdfbisb123df123335p394.dlfdlfjgdf123130098u'
+        'g-recaptcha-response': 'ksdfisdfbisb123df123335p394.dlfdlfjgdf123130098u',
       },
       input (name) {
         return this.inputs[name]
-      }
+      },
     }
     try {
       await recaptcha.handle({ response, request }, function () {})
