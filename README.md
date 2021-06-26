@@ -1,10 +1,7 @@
 # Adonis ReCAPTCHA v2
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/lookinlab/adonis-recaptcha2.svg)](https://greenkeeper.io/)
-[![Build Status](https://travis-ci.org/lookinlab/adonis-recaptcha2.svg?branch=master)](https://travis-ci.org/lookinlab/adonis-recaptcha2)
-[![Coverage Status](https://coveralls.io/repos/github/lookinlab/adonis-recaptcha2/badge.svg?branch=master)](https://coveralls.io/github/lookinlab/adonis-recaptcha2?branch=master)
-
-Verifier for Google reCAPTCHA v2
+Verifier for Google reCAPTCHA v2. Not working with ReCAPTCHA Enterprise or v3
+> Works with AdonisJS v4 (legacy)
 
 ## Installation
 Make sure to install it using [`adonis-cli`](https://github.com/adonisjs/adonis-cli), `npm` or `yarn`.
@@ -23,7 +20,7 @@ yarn add adonis-recaptcha2
 ## How to use
 
 ### Step 1: Get secret and site keys
-You need to receive your site key and secret key for your domain from [Google reCAPTCHA](https://www.google.com/recaptcha)
+You need to receive your `siteKey` and `secretKey` for your domain from [Google reCAPTCHA v3 Admin Console](https://www.google.com/recaptcha/admin)
 
 Login and Follow the steps on this page to include the reCAPTCHA on your website.
 
