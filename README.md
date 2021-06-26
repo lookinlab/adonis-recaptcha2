@@ -1,5 +1,7 @@
 # Adonis ReCAPTCHA v2
 
+Version [for **Adonis v4**](https://github.com/lookinlab/adonis-recaptcha2/tree/v1)
+
 [![Build Status](https://travis-ci.org/lookinlab/adonis-recaptcha2.svg?branch=master)](https://travis-ci.org/lookinlab/adonis-recaptcha2)
 [![Coverage Status](https://coveralls.io/repos/github/lookinlab/adonis-recaptcha2/badge.svg?branch=master)](https://coveralls.io/github/lookinlab/adonis-recaptcha2?branch=master)
 
@@ -87,7 +89,7 @@ Server.middleware.registerNamed({
 
 Example:
 ```ts
-Route.post('login', 'AuthController.login').middleware(['recaptcha'])
+Route.post('login', 'AuthController.login').middleware('recaptcha')
 ```
 
 This middleware will check `g-recaptcha-response` field in body request
