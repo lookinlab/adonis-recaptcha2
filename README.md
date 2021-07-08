@@ -1,11 +1,10 @@
 # Adonis ReCAPTCHA v2
 
-Version [for **Adonis v4**](https://github.com/lookinlab/adonis-recaptcha2/tree/v1)
-
-[![Build Status](https://travis-ci.org/lookinlab/adonis-recaptcha2.svg?branch=master)](https://travis-ci.org/lookinlab/adonis-recaptcha2)
-[![Coverage Status](https://coveralls.io/repos/github/lookinlab/adonis-recaptcha2/badge.svg?branch=master)](https://coveralls.io/github/lookinlab/adonis-recaptcha2?branch=master)
+[![npm-image]][npm-url] [![license-image]][license-url] [![typescript-image]][typescript-url]
 
 Verifier for Google ReCAPTCHA v2. Not working with ReCAPTCHA Enterprise or v3
+
+Docs [for **Adonis v4**](https://github.com/lookinlab/adonis-recaptcha2/tree/v1)
 
 ## Installation
 
@@ -131,3 +130,12 @@ const recaptchaConfig: RecaptchaConfig = {
 </body>
 </html>
 ```
+
+[npm-image]: https://img.shields.io/npm/v/adonis-recaptcha2?logo=npm&style=for-the-badge
+[npm-url]: https://www.npmjs.com/package/adonis-recaptcha2
+
+[license-image]: https://img.shields.io/npm/l/adonis-recaptcha2?style=for-the-badge&color=blueviolet
+[license-url]: https://github.com/lookinlab/adonis-recaptcha2/blob/develop/LICENSE.md
+
+[typescript-image]: https://img.shields.io/npm/types/adonis-recaptcha2?color=294E80&label=%20&logo=typescript&style=for-the-badge
+[typescript-url]: https://github.com/lookinlab
